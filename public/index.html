@@ -1,43 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Image Generator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo-wrapper">
+        <div class="logo">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </div>
+        <h1>AI Image Generator</h1>
+      </div>
+      <button class="theme-toggle">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </header>
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <div class="main-content">
+      <form action="#" class="prompt-form">
+        <div class="prompt-container">
+          <textarea class="prompt-input" placeholder="Describe your imagination in detail..." required autofocus></textarea>
+          <button type="button" class="prompt-btn">
+            <i class="fa fa-solid fa-moon"></i>
+          </button>
+        </div>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+        <div class="prompt-actions">
+          <select class="custom-select" id="model-select" required>
+            <option value="" selected disabled>Select model</option>
+            <option value="stabilityai/stable-diffusion-2">Stable Diffusion 2</option>
+            <option value="stabilityai/stable-diffusion-xl-base-1.0">Stable Diffusion XL</option>
+            <option value="runwayml/stable-diffusion-v1-5">Stable Diffusion v1.5</option>
+            <option value="prompthero/openjourney">Openjourney</option>
+            <option value="CompVis/stable-diffusion-v1-4">Stable Diffusion v1.4</option>
+          </select>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+          <select class="custom-select" id="count-select" required>
+            <option value="" selected disabled>Image Count</option>
+            <option value="1">1 Image</option>
+            <option value="2">2 Images</option>
+            <option value="3">3 Images</option>
+            <option value="4">4 Images</option>
+          </select>
+
+          <select class="custom-select" id="ratio-select" required>
+            <option value="" selected disabled>Aspect Ratio</option>
+            <option value="1/1">Square (1:1)</option>
+            <option value="16/9">Landscape (16:9)</option>
+            <option value="9/16">Portrait (9:16)</option>
+          </select>
+
+          <button type="submit" class="generate-btn">
+            <i class="fa-solid fa-wand-sparkles"></i> Generate
+          </button>
+        </div>
+
+        <div class="gallery-grid"></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
